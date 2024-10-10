@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NavBarOwner from '../components/NavBarOwner';
 import { jwtDecode } from 'jwt-decode';
+import '../assets/css/home.css';
 
 const OwnerHome = () => {
   const [workspaces, setWorkspaces] = useState([]);
@@ -15,11 +16,11 @@ const OwnerHome = () => {
             Authorization: `Bearer ${localStorage.getItem('token')}`, // Include JWT token for authentication
           },
         });
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch workspaces');
         }
-        
+
         const data = await response.json();
         setWorkspaces(data); // Set the fetched workspaces to state
       } catch (error) {
@@ -34,22 +35,23 @@ const OwnerHome = () => {
     <div>
       <NavBarOwner />
       <h1>Your Workspaces</h1>
-      {workspaces.length > 0 ? (
-        <ul>
-          {workspaces.map((workspace) => (
-            <li key={workspace._id}>
-              <h2>{workspace.name}</h2>
-              <p>{workspace.description}</p>
+      <div className="workspace-container">
+        {workspaces.length > 0 ? (
+          workspaces.map((workspace) => (
+            <div className="workspace-card" key={workspace._id}>
+              <img src={workspace.image} alt={workspace.name} className="workspace-image" />
+              <h2 className="workspace-name">{workspace.name}</h2>
+              <p className="workspace-description">{workspace.description}</p>
               <p>Location: {workspace.location}</p>
               <p>Capacity: {workspace.capacity}</p>
-              <p>Pricing: {workspace.pricing}</p>
-              <img src={workspace.image} alt={workspace.name} style={{ width: '100px', height: '100px' }} />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No workspaces found.</p>
-      )}
+              <p>Pricing: ${workspace.pricing}</p>
+              <button>View</button>
+            </div>
+          ))
+        ) : (
+          <p>No workspaces found.</p>
+        )}
+      </div>
     </div>
   );
 };

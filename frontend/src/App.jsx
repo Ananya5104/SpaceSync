@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage';
 import OwnerHome from './pages/OwnerHome';
 import UserHome from './pages/UserHome';
 import CreateWorkspace from './pages/CreateWorkspace';
+import OwnerProfile from './pages/OwnerProfile'
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path='/ownerHome' element={<OwnerHome/>}/>
           <Route path='userHome' element={<UserHome/>} />
           <Route path='/createWorkspace' element={<CreateWorkspace/>}  />
+          <Route path='/ownerProfile' element={<OwnerProfile/>} />
         </Routes>
       </div>
     </Router>

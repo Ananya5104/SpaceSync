@@ -1,0 +1,48 @@
+body{
+    height: fit-content;
+    margin: 0px
+}
+.workspace-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .workspace-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    width: 250px; /* Adjust the width as necessary */
+    text-align: center; /* Center text within the card */
+    transition: transform 0.2s; /* Smooth hover effect */
+  }
+  
+  .workspace-card:hover {
+    transform: scale(1.05); /* Slightly enlarge card on hover */
+  }
+  
+  .workspace-image {
+    width: 100%;
+    height: 150px; /* Fixed height for images */
+    object-fit: cover; /* Crop images to fit */
+    border-radius: 8px 8px 0 0; /* Round top corners of the image */
+  }
+  
+  .workspace-name {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+  
+  .workspace-description {
+    font-size: 0.9em;
+    color: #555; /* Slightly lighter color for description */
+  }
+
+button{
+    background-color: #63ace5;
+    border: none;
+}
