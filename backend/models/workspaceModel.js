@@ -18,6 +18,9 @@ const workspaceSchema = new mongoose.Schema({
     ref: 'owners', 
     required: true,
   },
+  ownername:{
+    type: String,
+  },
   capacity: {
     type: Number,
     required: true,

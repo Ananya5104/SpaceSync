@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom'
 
 const userNavBar = () => {
   return (
-    <div>userNavBar</div>
+    <div>
+      <Link>Home</Link>
+      <Link>Search</Link>
+      <Link>Profile</Link>
+    </div>
   )
 }
 

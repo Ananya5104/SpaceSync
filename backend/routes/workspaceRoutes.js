@@ -1,5 +1,6 @@
 const express = require('express')
 const Workspace = require('../models/workspaceModel')
+const Owner = require('../models/ownerModel')
 const multer = require('multer')
 const path = require('path')
 
@@ -19,7 +20,7 @@ const upload = multer({ storage: storage });
 // Save a new package with image upload handling
 router.post('/', upload.array('images'), async (req, res) => {
     try {
-        const { name, location, address, owner, capacity, pricing, description, amenities } = req.body;
+        const { name, location, address, owner, capacity, pricing, description, amenities, ownername } = req.body;
 
         if (!name || !location || !address || !owner || !capacity || !pricing) {
             return res.status(400).send({
@@ -27,6 +28,7 @@ router.post('/', upload.array('images'), async (req, res) => {
             });
         }
         console.log(req.files); // Logs the uploaded files
+        const ownerdata = await Owner.findById(owner)
 
         const imagePaths = req.files ? req.files.map(file => `/workspaceImages/${file.filename}`) : [];
 
@@ -36,6 +38,7 @@ router.post('/', upload.array('images'), async (req, res) => {
             location,
             address,
             owner,
+            ownername: ownerdata.name,
             capacity,
             pricing,
             description,

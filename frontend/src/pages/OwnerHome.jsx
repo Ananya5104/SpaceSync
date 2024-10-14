@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import NavBarOwner from '../components/NavBarOwner';
+import { Link } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import '../assets/css/home.css';
 
@@ -55,7 +56,7 @@ const OwnerHome = () => {
         <p>Location: {workspace.location}</p>
         <p>Capacity: {workspace.capacity}</p>
         <p>Pricing: ${workspace.pricing}</p>
-        <button>View</button>
+        <Link to={`/viewpostOwner/${workspace._id}`}><button>View</button></Link>
       </div>
     ))
   ) : (
