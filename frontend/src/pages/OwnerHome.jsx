@@ -36,22 +36,33 @@ const OwnerHome = () => {
       <NavBarOwner />
       <h1>Your Workspaces</h1>
       <div className="workspace-container">
-        {workspaces.length > 0 ? (
-          workspaces.map((workspace) => (
-            <div className="workspace-card" key={workspace._id}>
-              <img src={workspace.image} alt={workspace.name} className="workspace-image" />
-              <h2 className="workspace-name">{workspace.name}</h2>
-              <p className="workspace-description">{workspace.description}</p>
-              <p>Location: {workspace.location}</p>
-              <p>Capacity: {workspace.capacity}</p>
-              <p>Pricing: ${workspace.pricing}</p>
-              <button>View</button>
-            </div>
-          ))
-        ) : (
-          <p>No workspaces found.</p>
+  {workspaces.length > 0 ? (
+    workspaces.map((workspace) => (
+      <div className="workspace-card" key={workspace._id}>
+        <h2 className="workspace-name">{workspace.name}</h2>
+
+        {/* Display the first image (if it exists) */}
+        {workspace.images && workspace.images.length > 0 && (
+          <img 
+            src={`http://localhost:5000${workspace.images}`}
+            alt={`${workspace.name} workspace`}
+            className="workspace-image"
+            style={{ width: '100%', height: 'auto' }} 
+          />
         )}
+
+        <p className="workspace-description">{workspace.description}</p>
+        <p>Location: {workspace.location}</p>
+        <p>Capacity: {workspace.capacity}</p>
+        <p>Pricing: ${workspace.pricing}</p>
+        <button>View</button>
       </div>
+    ))
+  ) : (
+    <p>No workspaces found.</p>
+  )}
+</div>
+
     </div>
   );
 };

@@ -79,6 +79,7 @@ const LoginPage = () => {
             {message && <p className="message">{message}</p>}
             <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
             <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+            <input type="text" name="phno" placeholder="Phone Number" value={formData.phno} onChange={handleChange} required />
             <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
             <select name="role" className="role-select" value={formData.role} onChange={handleChange} required>
               <option value="" disabled>Select Role</option>

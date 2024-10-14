@@ -28,9 +28,9 @@ router.post('/', upload.array('images'), async (req, res) => {
         }
         console.log(req.files); // Logs the uploaded files
 
-
         const imagePaths = req.files ? req.files.map(file => `/workspaceImages/${file.filename}`) : [];
 
+        const amenitiesArray = amenities ? amenities.split(',').map(item => item.trim()) : [];
         const newWorkspace = {
             name,
             location,
@@ -39,8 +39,8 @@ router.post('/', upload.array('images'), async (req, res) => {
             capacity,
             pricing,
             description,
-            amenities: amenities || [],
-            image: imagePaths,
+            amenities: amenitiesArray,
+            images: imagePaths,
         };
 
         const workspace = await Workspace.create(newWorkspace);

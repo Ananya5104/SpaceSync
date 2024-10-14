@@ -10,6 +10,11 @@ const OwnerSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
+    phno:{
+        type: String,
+        required: true,
+        unique: true
+    },
     password: {
         type: String,
         required: true,
@@ -25,6 +30,9 @@ const OwnerSchema = new mongoose.Schema({
     role: {
         type: String,
         default: 'owner',  
+    },
+    profilepic: {
+        type: String
     }
 }, {
     timestamps:true

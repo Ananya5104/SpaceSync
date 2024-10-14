@@ -21,9 +21,10 @@ const WorkspaceForm = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setWorkspaceData({
       ...workspaceData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
@@ -41,9 +42,8 @@ const WorkspaceForm = () => {
   };
 
   // Update this function to handle image selection correctly
-const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);  // Convert FileList to Array
-    setImages(files);  // Update state with the selected files
+  const handleImageChange = (e) => {
+    setImages([...e.target.files]);
 };
 
 
@@ -74,7 +74,18 @@ const handleImageChange = (e) => {
 
       const data = await response.json();
       if (response.ok) {
-        alert('Workspace created successfully!');
+        setWorkspaceData({
+          name: '',
+          location: '',
+          address: '',
+          capacity: '',
+          pricing: '',
+          description: '',
+          amenities: '',
+          owner: ownerId,
+      });
+      setImages([]);
+      console.log("Package created successfully!");
         navigate('/ownerHome');
       } else {
         alert(data.message || 'Failed to create workspace.');
@@ -140,7 +151,7 @@ const handleImageChange = (e) => {
         <div>
           <label>Pricing:</label>
           <input
-            type="text"
+            type="number"
             name="pricing"
             value={workspaceData.pricing}
             onChange={handleChange}
@@ -170,16 +181,16 @@ const handleImageChange = (e) => {
         </div>
 
         <div>
-          <label>Image Upload (multiple):</label>
+          <label>Images :</label>
           <input
             type="file"
             name="images"
-            multiple  // Allow multiple file selection
+            multiple  
             onChange={handleImageChange}
           />
         </div>
 
-        <button type="submit">Create Workspace</button>
+        <button className='workspacebutton' type="submit">Create Workspace</button>
       </form>
     </div>
   );
