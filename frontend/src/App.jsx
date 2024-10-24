@@ -7,6 +7,7 @@ import UserHome from './pages/UserHome';
 import CreateWorkspace from './pages/CreateWorkspace';
 import ViewPostOwner from './pages/ViewPostOwner';
 import OwnerProfile from './pages/OwnerProfile'
+import UserProfile from './pages/UserProfile';
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/createWorkspace' element={<CreateWorkspace/>}  />
           <Route path = '/viewpostOwner/:id' element= {<ViewPostOwner/>} />
           <Route path='/ownerProfile' element={<OwnerProfile/>} />
+          <Route path='/userProfile' element={<UserProfile/>} />
         </Routes>
       </div>
     </Router>

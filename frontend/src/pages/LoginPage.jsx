@@ -4,7 +4,7 @@ import '../assets/css/LoginPage.css';
 
 const LoginPage = () => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', password: '', role: 'user' });
+  const [formData, setFormData] = useState({ name: '', email: '', password: '', role: 'user',phno:'' });
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 

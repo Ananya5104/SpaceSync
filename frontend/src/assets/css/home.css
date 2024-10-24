@@ -46,3 +46,8 @@ button{
     background-color: #63ace5;
     border: none;
 }
+.all-ws{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

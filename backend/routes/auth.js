@@ -20,10 +20,10 @@ const getModel = (role) => {
 };
 
 router.post('/signup', async (req, res) => {
-    const { name, email, password, role } = req.body;
+    const { name, email, password, role, phno } = req.body;
 
     try {
-        if (!name || !email || !password || !role) {
+        if (!name || !email || !password || !role || !phno) {
             return res.status(400).json({ msg: 'Please enter all fields' });
         }
         if (!['user', 'owner'].includes(role)) {
@@ -40,6 +40,7 @@ router.post('/signup', async (req, res) => {
             name,
             email,
             password,
+            phno
         });
 
         const salt = await bcrypt.genSalt(10);

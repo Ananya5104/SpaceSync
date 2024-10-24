@@ -32,7 +32,7 @@ const ViewWorkspace = () => {
 
     return (
         <div className="workspace-view-container">
-            {workspace ? ( // Check if workspace is not null
+            {workspace ? ( 
                 <div className="workspace-details">
                     <h1 className="workspace-name">{workspace.name}</h1>
                     {workspace.images && workspace.images.length > 0 && (
