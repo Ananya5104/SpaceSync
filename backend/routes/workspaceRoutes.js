@@ -147,5 +147,23 @@ router.get('/owner/:ownerId', async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 });
+router.get('/user/:userId', async (req, res) => {
+  const { userId } = req.params; // Extract ownerId from route parameters
+
+  try {
+      // Find workspaces associated with the ownerId
+      const workspaces = await Workspace.find({ user: userId }); // Adjust according to your schema
+
+      if (!workspaces.length) {
+          return res.status(404).json({ message: 'No workspaces found for this usser.' });
+      }
+
+      // Return the workspaces in the response
+      res.status(200).json(workspaces);
+  } catch (error) {
+      console.error('Error fetching workspaces:', error);
+      res.status(500).json({ message: 'Server error' });
+  }
+});
 
 module.exports = router;

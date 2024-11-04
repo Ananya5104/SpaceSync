@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const auth = require('./routes/auth');
 const workspaceRoutes = require('./routes/workspaceRoutes')
 const ownerRoutes = require('./routes/ownerRoutes')
+const userRoutes = require('./routes/userRoutes')
 const path = require('path')
 const cors = require('cors')
 
@@ -24,6 +25,7 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 app.use('/auth', auth)
 app.use('/workspaces',workspaceRoutes)
 app.use('/owners',ownerRoutes)
+app.use('/users',userRoutes)
 
 const port = 5000;
 app.listen(port, () => {
